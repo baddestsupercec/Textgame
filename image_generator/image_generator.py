@@ -5,8 +5,10 @@ from pathlib import Path
 
 import openai
 
+
 class image_generator:
     """Image generator class using DALLE 2"""
+
     def __init__(self, api_key):
         self.api_key = api_key
 
@@ -26,8 +28,8 @@ class image_generator:
         openai.api_key = self.api_key
         response = openai.Image.create(
             prompt=prompt,
-            n=1, # Number of images.
-            size=size, # 256x256, 512x512, or 1024x1024 pixels.
+            n=1,  # Number of images.
+            size=size,  # 256x256, 512x512, or 1024x1024 pixels.
             response_format="b64_json",
         )
         response["prompt"] = prompt
