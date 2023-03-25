@@ -12,8 +12,10 @@ class image_generator:
     def __init__(self, api_key):
         self.api_key = api_key
 
-    def generate(self, prompt, output_name=None, size="256x256", convert_to_png=True):
-        """Generate an image.
+    def generate_from_prompt(
+        self, prompt, output_name=None, size="256x256", convert_to_png=True
+    ):
+        """Generate an image from a text prompt.
 
         Arguments:
             api_key (str): OpenAI API key.
@@ -33,6 +35,37 @@ class image_generator:
             response_format="b64_json",
         )
         response["prompt"] = prompt
+
+        with open(output_name, mode="w", encoding="utf-8") as file:
+            json.dump(response, file)
+
+        print(f"File generated - {output_name}")
+
+        if convert_to_png:
+            self.convert_json_to_png(output_name)
+
+    def generate_from_image(
+        self, image_path, output_name=None, size="256x256", convert_to_png=True
+    ):
+        """Generate an image from another image.
+
+        Arguments:
+            api_key (str): OpenAI API key.
+            image_path (str): Path to source image.
+            output_name (str): Name of output file.
+            size (str): Size of output image.
+            convert_to_png (bool): Convert output json to PNG.
+        """
+        if output_name is None:
+            output_name = f"{image_path.split('.')[0]}.json"
+
+        openai.api_key = self.api_key
+        response = openai.Image.create_variation(
+            image=open(image_path, mode="rb"),
+            n=1,  # Number of images.
+            size=size,  # 256x256, 512x512, or 1024x1024 pixels.
+            response_format="b64_json",
+        )
 
         with open(output_name, mode="w", encoding="utf-8") as file:
             json.dump(response, file)
