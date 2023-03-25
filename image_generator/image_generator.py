@@ -10,29 +10,55 @@ class image_generator:
     """Image generator class using DALLE 2"""
 
     def __init__(self, api_key):
-        self.api_key = api_key
-
-    def generate(self, prompt, output_name=None, size="256x256", convert_to_png=True):
-        """Generate an image.
-
+        """
         Arguments:
             api_key (str): OpenAI API key.
-            prompt (str): Text prompt for image generation.
+        """
+        self.api_key = api_key
+
+    def generate(
+        self,
+        data,
+        input_type,
+        output_name=None,
+        num_images=1,
+        size="256x256",
+        convert_to_png=True,
+    ):
+        """Generate an image from a text prompt.
+
+        Arguments:
+            data (str): input data.
+            input_type (str): Type of input. Must be either "prompt" or "image".
             output_name (str): Name of output file.
-            size (str): Size of output image.
+            num_images (int): Number of images to generate.
+            size (str): Size of output image. 256x256, 512x512, or 1024x1024 pixels.
             convert_to_png (bool): Convert output json to PNG.
         """
+        # Set output_name if none provided.
         if output_name is None:
-            output_name = f"{prompt[:20]}.json"
+            output_name = f"{data}.json"
 
+        # Set API Key.
         openai.api_key = self.api_key
-        response = openai.Image.create(
-            prompt=prompt,
-            n=1,  # Number of images.
-            size=size,  # 256x256, 512x512, or 1024x1024 pixels.
-            response_format="b64_json",
-        )
-        response["prompt"] = prompt
+
+        if input_type == "prompt":
+            response = openai.Image.create(
+                prompt=data,
+                n=num_images,
+                size=size,
+                response_format="b64_json",
+            )
+            response["prompt"] = data
+        elif input_type == "image":
+            response = openai.Image.create_variation(
+                image=open(image_path, mode="rb"),
+                n=num_images,
+                size=size,
+                response_format="b64_json",
+            )
+        else:
+            raise ValueError("Argument 'input_type' must one of 'prompt', 'image'.")
 
         with open(output_name, mode="w", encoding="utf-8") as file:
             json.dump(response, file)
@@ -40,9 +66,9 @@ class image_generator:
         print(f"File generated - {output_name}")
 
         if convert_to_png:
-            self.convert_json_to_png(output_name)
+            self._convert_json_to_png(output_name)
 
-    def convert_json_to_png(self, file_name):
+    def _convert_json_to_png(self, file_name):
         """Convert json to PNG.
 
         Arguments:
