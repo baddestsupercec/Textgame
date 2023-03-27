@@ -37,7 +37,7 @@ class image_generator:
         """
         # Set output_name if none provided.
         if output_name is None:
-            output_name = data
+            output_name = data[:20]
 
         # Set API Key.
         openai.api_key = self.api_key
