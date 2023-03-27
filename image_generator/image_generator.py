@@ -37,7 +37,7 @@ class image_generator:
         """
         # Set output_name if none provided.
         if output_name is None:
-            output_name = f"{data}.json"
+            output_name = data
 
         # Set API Key.
         openai.api_key = self.api_key
@@ -60,13 +60,16 @@ class image_generator:
         else:
             raise ValueError("Argument 'input_type' must one of 'prompt', 'image'.")
 
+        # Append creation time to make unique filename & '.json'
+        output_name = output_name + f"-{response['created']}" + ".json"
+
         with open(output_name, mode="w", encoding="utf-8") as file:
             json.dump(response, file)
 
         print(f"File generated - {output_name}")
 
         if convert_to_png:
-            self._convert_json_to_png(output_name)
+            return self._convert_json_to_png(output_name)
 
     def _convert_json_to_png(self, file_name):
         """Convert json to PNG.
