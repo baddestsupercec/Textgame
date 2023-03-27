@@ -20,7 +20,7 @@ button_color = (41, 128, 185)
 hover_color = (52, 152, 219)
 
 is_running = True
-manager = pygame_gui.UIManager((800, 600), 'pygame_gui_examples/data/themes/embedded_images_theme.json')
+manager = pygame_gui.UIManager((800, 600))
 #Use this to display text
 text_box = UITextBox('<font face=fira_code size=3 color=#FFFFFF>'
                      'This is a test for our user interface using pygame. It would allow us to display images,'
