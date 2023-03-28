@@ -1,0 +1,3 @@
+[submodule "image_generator-free/stable-diffusion-webui"]
+	path = image_generator-free/stable-diffusion-webui
+	url = git@github.com:AUTOMATIC1111/stable-diffusion-webui.git
