@@ -25,7 +25,13 @@ giveGun = False
 shotgun = False
 food = False
 medicine = False
-
+twoPlayer = False
+destination = "gun store"
+bitTwice = False
+run = False
+eatFood = False
+useMedicine = False
+keepGun = False
 manager = pygame_gui.UIManager((800, 600))
 #Use this to display text
 text_box = UITextBox('<font face=fira_code size=3 color=#FFFFFF>'
@@ -122,19 +128,146 @@ scenes.append(("David stumbles back and reaches for his knife. Before he can rea
     16,
     16,
     1)) #15
-scenes.append(("Leave Store.",
-    "Exit the store",
+scenes.append(("David approaches the exit.",
+    "Continue",
     "Exit the store",
     17,
     17,
     1)) #16
+scenes.append(("David approaches the exit and peaks his head out to survey the surrounding area. The street looks clear, and David heads outside towards the " + destination +". Just as he nears his destination he turns a corner and is confronted by two zombies.",
+    "Fight",
+    "Run",
+    18,
+    19,
+    2)) #17
+scenes.append(("David reaches for his gun as the two zombies approach him. He manages to take one out before the other grabs ahold of him. It tackles him to the ground and tries to gnaw at his flesh. David tries to hold it back, but his energy is getting spent.",
+    "Continue",
+    "Continue",
+    20,
+    20,
+    1)) #18
+scenes.append(("David quickly turns around and sprints away as the fast moving zombies pursue him. If he can make it home, the defenses set up at the house should keep him safe",
+    "Continue",
+    "Continue",
+    20,
+    20,
+    1)) #19
+scenes.append(("Chapter 1: Cole","Continue","Continue",21,21,1)) #20
+scenes.append(("Cole anxiously awaits his fathers return and paces around the house. It is getting dark out, and Cole senses something must be wrong. Fearing for his father's safety, he decides to go looking for him.",
+    "Continue",
+    "Continue",
+    22,
+    22,
+    1)) #21
+scenes.append(("Cole follows his fathers path and heads towards the town. He eventually reaches the outskirts when he sees his father running towards him, pursued by two zombies.",
+    "Continue",
+    "Continue",
+    23,
+    23,
+    1)) #22
+scenes.append(("As David yells for Cole to run and get back to the house, the pair of zombies catch up to him and tackle him to the ground. Cole runs to help, but David shouts not to come any closer and stay safe.",
+    "Try to help",
+    "Stay back",
+    24,
+    25,
+    2)) #23
+scenes.append(("Cole pulls out the gun his father had trusted him with and takes aim. He fires multiple shots, but the zombies persist in their attack. With his last shot, he hits one of them directly in the head and kills it. David reaches for his knife, but this loosens his defense against the remaining zombie and it bites him on the arm. David screams in pain and use his free hand to stab the zombie and kill it for good.",
+    "Continue",
+    "Continue",
+    26,
+    26,
+    1)) #24
+scenes.append(("Afraid and unsure of what to do, Cole listens to his father and keeps his distance. With David's energy spent, David tries to reach for his knife as one zombie sinks its teeth into his leg and the other his arm. He screams in pain and in a burst of adrenaline, uses this moment to kill them for good.",
+    "Continue",
+    "Continue",
+    26,
+    26,
+    1)) #25
+scenes.append(("With the threat gone, Cole runs over to David and looks in shock at his wounds. They've heard over the radio that nobody has lasted more than a week after being bit.\nDavid: Listen, everything is going to be ok. I know things are scary right now but we need to get back to the house before its gets too dark.\nCole: Ok, let me help you.\nAs night falls, Cole and a weakened David make their way back home.",
+    "Continue",
+    "Continue",
+    27,
+    27,
+    1)) #26
+scenes.append(("They arrive home safely and sit down to talk.\nDavid: Cole, we don't know what is going to happen to me. I'm sorry you have to go through this. All that matters is that you are safe. I think it is best if we make our way to that refuge in Virginia. If we take the car we should make it within a few days.\nCole begins to feel a glimmer of hope.",
+    "Ask if he could be cured",
+    "Ask if it will be safe there",
+    28,
+    29,
+    2)) #27
+scenes.append(("Cole: It's been awhile, but I remember hearing them talk about treatments they were working on. We can get you help!\nDavid looks unsure\nDavid: I hope so, we'll see when we get there, but no matter what you will be safe.",
+    "Continue",
+    "Continue",
+    30,
+    30,
+    1)) #28
+scenes.append(("Cole: Do you really think we will be safe? The radio went silent awhile ago, we don't even know if that place is still around.\nDavid: We know the military had it running, they would defend it at all costs. I'm sure it will be ok.",
+    "Continue",
+    "Continue",
+    30,
+    30,
+    1)) #29
+scenes.append(("Cole looks at what David has brought back with him and notices he found another gun.",
+    "Ask if you can keep a gun",
+    "Let David keep the weapons",
+    33,
+    37,
+    2)) #30
+scenes.append(("David: Here, I know you're hungry, I was able to find some food.\nCole begins eating but notices his father isn't eating anything.\nCole: Why are you eating, aren't you hungry?\nDavid: I'm alright. I wasn't able to find much, you should keep your strength up.",
+    "Share food with David",
+    "Continue eating",
+    34,
+    37,
+    2)) #31
+scenes.append(("Cole looks at what David has brought back with him and notices he found some antibiotics.\nCole: You found medicine! This could help you, you need to take it.\nDavid: We aren't sure if that will do anything for me. That stuff is like gold these days, we should save it.",
+    "Beg David to take it",
+    "Agree to save it",
+    35,
+    36,
+    2)) #32
+scenes.append(("Cole: Now that we have a few guns, do you think I could keep one?\nDavid: You did good today, I wish you didn't have to but thanks for coming out to help me. We will need to keep practicing, but this belongs to you.\nDavid lets Cole keep a pistol.",
+    "Continue",
+    "Continue",
+    37,
+    37,
+    1)) #33
+scenes.append(("Cole: I'm not eating unless you do. You can't give up dad.\nCole passes David some food.\nDavid: Ok buddy, but if you are still hungry let me know.",
+    "Continue",
+    "Continue",
+    37,
+    37,
+    1)) #34
+scenes.append(("Cole: Please dad, this could really help you. If you can hang in there long enough we can get you help. Please take it.\nDavid: Ok bud, I'll take it.\nDavid takes the medicine.",
+    "Continue",
+    "Continue",
+    37,
+    37,
+    1)) #35
+scenes.append(("Cole: Fine, but if you get any worse you need to try and take this.\nCole puts away the medicine.",
+    "Continue",
+    "Continue",
+    37,
+    37,
+    1)) #36
+scenes.append(("After getting some sleep, David and Cole gather their supplies and pack them into their car. They don't have much fuel, but they should be able to get a good distance toward their destination. They say goodbye to their home and begin their journey.",
+    "Continue",
+    "Continue",
+    38,
+    38,
+    1)) #37
+scenes.append(("End of Chapter 1",
+    "Continue",
+    "Continue",
+    39,
+    39,
+    1)) #38
     
 
 def showText(text):
     text_box.set_text(text)
     text_box.set_active_effect(pygame_gui.TEXT_EFFECT_TYPING_APPEAR,
-                                       params={'time_per_letter': 0.03,
-                                               'time_per_letter_deviation': 0.02})
+                                       params={'time_per_letter': 0.02,
+                                               'time_per_letter_deviation': 0})
 def showTextButtons(text, x, y):
     surface = font.render(text, True, text_color)
     screen.blit(surface, (x, y))
@@ -150,10 +283,21 @@ def newChoice(sceneNum):
     global giveGun
     global shotgun
     global medicine
+    global twoPlayer
+    global destination
+    global bitTwice
+    global run
+    global eatFood
+    global useMedicine
+    global keepGun
+    #Chapter 1
+    if(sceneNum==2):
+        twoPlayer = True
     if(sceneNum==7):
         giveGun = True
     if(sceneNum==10):
         shotgun = True
+        destination = "grocery store"
     if(sceneNum==11):
         food = True
     if(sceneNum==14):
@@ -161,9 +305,24 @@ def newChoice(sceneNum):
     if(sceneNum==15 or (sceneNum==14 and giveGun == True)):
         food = False
         medicine = True
+    if(sceneNum==18 and (giveGun == True and shotgun == False)):
+        bitTwice = True
+    if(sceneNum==19):
+        run = True
+    if(sceneNum==19 and giveGun == False):
+        bitTwice = True
+    if(sceneNum==33):
+        keepGun = True
+    if(sceneNum==34):
+        eatFood = True
+    if(sceneNum==35):
+        useMedicine = True
 
 #Checks if the text of the current scene should be updated based on previous decisions, otherwise returns the scenes default text
 def updateChoice(sceneNum):
+    #Chapter 1
+    if(sceneNum == 3 and twoPlayer == True):
+        return "Chapter 1: David\nPlayer 1's turn!"
     if(sceneNum == 9 and giveGun == True):
         return "Now without his gun and armed with only a knife, David leaves his home for the first time in months. He carefully makes his way from his neighborhood to the outskirts of the town. He notices the gun store and grocery store both seem safe to check. Which should he search first?"
     if(sceneNum == 14 and giveGun == True):
@@ -171,11 +330,39 @@ def updateChoice(sceneNum):
     if(sceneNum == 16 and food == True and medicine == True):
         return "Having gathered food and medicine, David goes to exit the store."
     if(sceneNum == 16 and food == True and medicine == False):
-        return "Having gathered some food , David goes to exit the store."
+        return "Having gathered some food, David goes to exit the store."
     if(sceneNum == 16 and food == False and medicine == True):
         return "Having gathered medicine, David goes to exit the store."
     if(sceneNum == 16 and shotgun == True):
         return "Having gathered a new gun and some ammo, David goes to exit the store."
+    if(sceneNum==17):
+        return "David approaches the exit and peaks his head out to survey the surrounding area. The street looks clear, and David heads outside towards the " + destination +". Just as he nears his destination he turns a corner and is confronted by two zombies."
+    if(sceneNum==18 and bitTwice == True):
+        return "With no available gun, David pulls out his knife to defend himself. He tries to take out one of the zombies but the flesh hungry monsters manage to overpower him and tackle him to the ground. David uses all of his strength to hold them back, but things are looking grim."
+    if(sceneNum==22 and run == False and bitTwice == True):
+        return "Cole follows his fathers path and heads towards the town. He reaches the outskirts when he hears yelling in the distance. He sprints into the town and sees his father struggling with two zombies."
+    if(sceneNum==22 and run == False and bitTwice == False):
+        return "Cole follows his fathers path and heads towards the town. He reaches the outskirts when he hears yelling in the distance. He sprints into the town and sees his father struggling with a zombie."
+    if(sceneNum==23 and run == False and bitTwice == False):
+        return "Cole continues to run towards his father to help but before he can get there the zombie sinks its teeth into his fathers arm. Cole screams in horror, and David yells for him to stay back."
+    if(sceneNum==23 and run == False and bitTwice == True):
+        return "Cole continues to run towards his father to help but before he can get there one zombie sinks its teeth into his fathers arm and the other into his leg. Cole screams in horror, and David yells for him to stay back."
+    if(sceneNum==24 and giveGun == False and run == False):
+        return "Unarmed and helpless, Cole quickly grabs an old wooden board on the street and runs to his father. He swings at the zombie with all his strength, but it is unaffected and remains focused on David. He finally unleashes a massave swing that stuns the zombie and gives David the chance to grab his knife and kill it for good."
+    if(sceneNum==24 and giveGun == True and run == False and bitTwice == False):
+        return "Cole takes out the gun his father trusted him with and lines up his target. He fires multiple shots but the zombie is unafected. Down to his last shot, he fires into the Zombie's head and kills it for good."
+    if(sceneNum==24 and giveGun == True and run == False and bitTwice == True):
+        return "Cole takes out the gun his father trusted him with and lines up his target. He fires multiple shots but the zombie is unafected. Down to his last shot, he fires into the Zombie's head and kills it for good. David uses this opportunity to grab his knife and kill the remaining zombie."
+    if(sceneNum==24 and run == True and giveGun == False):
+        return "Unarmed and helpless, Cole quickly grabs an old wooden board on the street and runs to his father. He desperately tries to hit and distract the zombies but it is no use, as they remain fixated on David. With David's energy spent, David tries to reach for his knife as one zombie sinks its teeth into his leg and the other his arm. He screams in pain and in a burst of adrenaline, uses this momement to kill them as they bite into him."
+    if(sceneNum == 25 and run == False and bitTwice == False):
+        return "Afraid and unsure of what to do, Cole listens to his father and keeps his distance. David gains a burst of adrenaline and uses his free hand to finally grab his knife and kill the zombie for good."
+    if(sceneNum == 25 and run == False and bitTwice == True):
+        return "Afraid and unsure of what to do, Cole listens to his father and keeps his distance. With the zombies now distracted, David gains a burst of adrenaline and gets ahold of his knife and kill both zombies for good."
+    if(sceneNum == 30 and medicine == True):
+        runScene(32)
+    if(sceneNum == 30 and medicine == False and food == True):
+        runScene(31)
     return scenes[sceneNum][0]
 
 #main function that can be given a scene and will handle everything associated with displaying that scene
