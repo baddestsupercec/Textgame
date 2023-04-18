@@ -5,7 +5,14 @@ import pygame_gui
 from pygame_gui.elements import UITextBox
 from pygame_gui.core import ObjectID
 
+
+
 pygame.init()
+
+pygame.mixer.music.load("Unseen Horrors.mp3")
+pygame.mixer.music.set_volume(0.5)
+pygame.mixer.music.play(-1)
+
 WIDTH = 800
 HEIGHT = 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
