@@ -14,13 +14,13 @@ pygame.mixer.init()
 """ "Quinn's Song: A New Man" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/ """
-startMusic = pygame.mixer.Sound("audio/Quinns Song-A New Man.mp3")
+startMusic = pygame.mixer.Sound("data/audio/Quinns Song-A New Man.mp3")
 startMusic.set_volume(0.4)
 
 """ "Metaphysik" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/ """
-introMusic = pygame.mixer.Sound("audio/Metaphysik.mp3")
+introMusic = pygame.mixer.Sound("data/audio/Metaphysik.mp3")
 introMusic.set_volume(0.4)
 
 # Play the first sound
