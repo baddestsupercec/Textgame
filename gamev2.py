@@ -52,10 +52,10 @@ font = pygame.font.SysFont(None, 28)
 
 background_color = (0, 0, 0)
 background = pygame.Surface((800, 600))
-background.fill((6, 28, 31))
-button_color = (8, 12, 9)
-text_color = (107, 116, 118)
-#hover_color = (52, 152, 219)
+#background.fill((6, 28, 31))
+button_color = (17, 21, 24)
+button_hover_color = (168, 172, 172)
+text_color = (87, 95, 96)
 
 is_running = True
 
@@ -383,9 +383,13 @@ def showTextButtons(text, x, y):
     screen.blit(surface, (x, y))
 
 # Use this to make a button
-def choiceButton(text, x, y, w, h, color):
-    pygame.draw.rect(screen, text_color, (x - 0.1, y - 0.1, w + 2, h + 2))
-    pygame.draw.rect(screen, color, (x, y, w, h))
+def choiceButton(text, x, y, w, h):
+    pygame.draw.rect(screen, text_color, (x - 0.2, y - 0.1, w + 2, h + 2))
+    mousePos = pygame.mouse.get_pos()
+    if x + w > mousePos[0] > x and y + h > mousePos[1] > y:
+        pygame.draw.rect(screen, button_hover_color, (x, y, w, h))
+    else:
+        pygame.draw.rect(screen, button_color, (x, y, w, h))
     showTextButtons(text, x + w/2 - len(text)*5, y + h/2 - 10)
 
 # Function used to update all variables related to decisions
@@ -477,11 +481,17 @@ def runScene(sceneNum):
     showText(updateChoice(sceneNum))
     time_delta = clock.tick(60)/1000.0
 
+    buttonWidth = 325
+    buttonHeight = 40
+
     button1X = 50
-    button1Y = 450
+    button1Y = 530
+
+    button2X = WIDTH - buttonWidth - button1X
+    button2Y = button1Y
+
     if (scenes[sceneNum].numButtons == 1):
-        button1X = 80 + 150
-        button1Y = 450
+        button1X = (WIDTH - buttonWidth) // 2 
 
     # manager.process_events(event)
     while True:
@@ -503,11 +513,12 @@ def runScene(sceneNum):
         
         manager.update(time_delta)
         manager.draw_ui(window_surface)
-        choiceButton(scenes[sceneNum].button1Text,
-                    button1X, button1Y, 325, 40, button_color)
-        if scenes[sceneNum].numButtons == 2:
-            choiceButton(scenes[sceneNum].button2Text,
-                        425, 450, 325, 40, button_color)
+        if showTextButtons:
+            choiceButton(scenes[sceneNum].button1Text,
+                        button1X, button1Y, buttonWidth, buttonHeight)
+            if scenes[sceneNum].numButtons == 2:
+                choiceButton(scenes[sceneNum].button2Text,
+                        button2X, button2Y, buttonWidth, buttonHeight)
         pygame.display.update()
 
 
