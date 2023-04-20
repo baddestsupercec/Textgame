@@ -24,19 +24,19 @@ introMusic.set_volume(0.4)
 """ "SCP-x3x (I am Not OK)" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/ """
-scene17Music = pygame.mixer.Sound("audio/SCP-x3x.mp3")
+scene17Music = pygame.mixer.Sound("data/audio/SCP-x3x.mp3")
 scene17Music.set_volume(0.35)
 
 """ "Unseen Horrors" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/ """
-scene22Music = pygame.mixer.Sound("audio/Unseen Horrors.mp3")
+scene22Music = pygame.mixer.Sound("data/audio/Unseen Horrors.mp3")
 scene22Music.set_volume(0.45)
 
 """ "Awkward Meeting" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/ """
-scene26Music = pygame.mixer.Sound("audio/Awkward Meeting.mp3")
+scene26Music = pygame.mixer.Sound("data/audio/Awkward Meeting.mp3")
 scene26Music.set_volume(0.2)
 
 # Play the first sound
@@ -384,6 +384,7 @@ def showTextButtons(text, x, y):
 
 # Use this to make a button
 def choiceButton(text, x, y, w, h, color):
+    pygame.draw.rect(screen, text_color, (x - 0.1, y - 0.1, w + 2, h + 2))
     pygame.draw.rect(screen, color, (x, y, w, h))
     showTextButtons(text, x + w/2 - len(text)*5, y + h/2 - 10)
 
