@@ -23,6 +23,24 @@ http://creativecommons.org/licenses/by/4.0/ """
 introMusic = pygame.mixer.Sound("audio/Metaphysik.mp3")
 introMusic.set_volume(0.4)
 
+""" "SCP-x3x (I am Not OK)" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/ """
+scene17Music = pygame.mixer.Sound("audio/SCP-x3x.mp3")
+scene17Music.set_volume(0.35)
+
+""" "Unseen Horrors" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/ """
+scene22Music = pygame.mixer.Sound("audio/Unseen Horrors.mp3")
+scene22Music.set_volume(0.45)
+
+""" "Awkward Meeting" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/ """
+scene26Music = pygame.mixer.Sound("audio/Awkward Meeting.mp3")
+scene26Music.set_volume(0.2)
+
 # Play the first sound
 startMusic.play()
 
@@ -157,7 +175,9 @@ scenes.append(Scene("David slowly moves towards the medicine, doing his best to 
     "Use knife to kill zombie",
     14,
     15,
-    2)) #13
+    2,  
+    True,
+    scene17Music)) #13
 scenes.append(Scene("David stumbles back and pulls out his gun. He takes a moment to line up his shot and pulls the trigger. The shot hits the zombie in the head, taking it down with little problem. David quickly grabs the medicine and heads for the exit, hoping the shot doesn't attract any more of them.",
     "Exit the store",
     "Exit the store",
@@ -181,7 +201,9 @@ scenes.append(Scene("David approaches the exit and peaks his head out to survey 
     "Run",
     18,
     19,
-    2)) #17
+    2,
+    True,
+    scene17Music)) #17
 scenes.append(Scene("David reaches for his gun as the two zombies approach him. He manages to take one out before the other grabs ahold of him. It tackles him to the ground and tries to gnaw at his flesh. David tries to hold it back, but his energy is getting spent.",
     "Continue",
     "Continue",
@@ -194,7 +216,14 @@ scenes.append(Scene("David quickly turns around and sprints away as the fast mov
     20,
     20,
     1)) #19
-scenes.append(Scene("Chapter 1: Cole","Continue","Continue",21,21,1)) #20
+scenes.append(Scene("Chapter 1: Cole",
+    "Continue",
+    "Continue",
+    21,
+    21,
+    1,
+    True,
+    introMusic)) #20
 scenes.append(Scene("Cole anxiously awaits his fathers return and paces around the house. It is getting dark out, and Cole senses something must be wrong. Fearing for his father's safety, he decides to go looking for him.",
     "Continue",
     "Continue",
@@ -206,7 +235,9 @@ scenes.append(Scene("Cole follows his fathers path and heads towards the town. H
     "Continue",
     23,
     23,
-    1)) #22
+    1,
+    True,
+    scene22Music)) #22
 scenes.append(Scene("As David yells for Cole to run and get back to the house, the pair of zombies catch up to him and tackle him to the ground. Cole runs to help, but David shouts not to come any closer and stay safe.",
     "Try to help",
     "Stay back",
@@ -230,7 +261,9 @@ scenes.append(Scene("With the threat gone, Cole runs over to David and looks in 
     "Continue",
     27,
     27,
-    1)) #26
+    1,
+    True,
+    scene26Music)) #26
 scenes.append(Scene("They arrive home safely and sit down to talk.\nDavid: Cole, we don't know what is going to happen to me. I'm sorry you have to go through this. All that matters is that you are safe. I think it is best if we make our way to that refuge in Virginia. If we take the car we should make it within a few days.\nCole begins to feel a glimmer of hope.",
     "Ask if he could be cured",
     "Ask if it will be safe there",
