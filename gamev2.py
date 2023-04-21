@@ -390,7 +390,9 @@ def choiceButton(text, x, y, w, h):
         pygame.draw.rect(screen, button_hover_color, (x, y, w, h))
     else:
         pygame.draw.rect(screen, button_color, (x, y, w, h))
-    showTextButtons(text, x + w/2 - len(text)*5, y + h/2 - 10)
+
+    text_w, text_h = font.size(text)
+    showTextButtons(text, x + ((w - text_w) / 2), y + ((h - text_h) / 2))
 
 # Function used to update all variables related to decisions
 def newChoice(sceneNum):
@@ -503,10 +505,10 @@ def runScene(sceneNum):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     x, y = event.pos
-                    if x > button1X and x < (button1X + 350) and y > button1Y and y < (button1Y + 40):
+                    if x > button1X and x < (button1X + buttonWidth) and y > button1Y and y < (button1Y + buttonHeight):
                         newChoice(scenes[sceneNum].sceneOption1Index)
                         runScene(scenes[sceneNum].sceneOption1Index)
-                    elif x > 420 and x < 770 and y > 450 and y < 490 and scenes[sceneNum].numButtons == 2:
+                    elif x > button2X and x < (button2X + buttonWidth) and y > button2Y and y < (button2Y + buttonHeight) and scenes[sceneNum].numButtons == 2:
                         newChoice(scenes[sceneNum].sceneOption2Index)
                         runScene(scenes[sceneNum].sceneOption2Index)
             manager.process_events(event)
