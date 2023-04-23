@@ -3,6 +3,7 @@ import base64
 
 import requests
 
+
 def submit_post(url: str, data: dict):
     """
     Submit a POST request to the given URL with the given data.
@@ -18,8 +19,8 @@ def save_encoded_image(b64_image: str, output_path: str):
         image_file.write(base64.b64decode(b64_image))
 
 
-if __name__ == '__main__':
-    txt2img_url = 'http://127.0.0.1:7861/sdapi/v1/txt2img'
-    data = {'prompt': 'An abandoned hospital in a zombie apocalypse'}
+if __name__ == "__main__":
+    txt2img_url = "http://127.0.0.1:7861/sdapi/v1/txt2img"
+    data = {"prompt": "An abandoned hospital in a zombie apocalypse"}
     response = submit_post(txt2img_url, data)
-    save_encoded_image(response.json()['images'][0], f'{data["prompt"]}.png')
+    save_encoded_image(response.json()["images"][0], f'{data["prompt"]}.png')

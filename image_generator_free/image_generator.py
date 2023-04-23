@@ -25,7 +25,6 @@ class image_generator:
         """
         return requests.post(url, data=json.dumps(data))
 
-
     def _save_encoded_image(self, b64_image: str, output_path: str):
         """
         Save the given image to the given output path.
@@ -57,9 +56,9 @@ class image_generator:
         full_path = f"{self.img_write_dir}{output_name}.png"
 
         if input_type == "prompt":
-            send_data = {'prompt': data, 'width': size, 'height': size}
+            send_data = {"prompt": data, "width": size, "height": size}
             response = self._submit_post(self.api_url, send_data)
-            self._save_encoded_image(response.json()['images'][0], full_path)
+            self._save_encoded_image(response.json()["images"][0], full_path)
         elif input_type == "image":
             raise NotImplementedError("Image input not yet implemented.")
         else:
