@@ -588,9 +588,13 @@ def runScene(sceneNum):
     scene_text = updateChoice(sceneNum)
     showText(scene_text)
 
-    img_name = "image"
-    img = ig.generate(data=scene_text, input_type="prompt", output_name=img_name)
-    screen.blit(pygame.image.load(f"{images_dir}{img_name}.png"), (272, 230))
+    placement_tuple = (272, 230)
+    try:
+        img_name = "image"
+        img = ig.generate(data=scene_text, input_type="prompt", output_name=img_name)
+        screen.blit(pygame.image.load(f"{images_dir}{img_name}.png"), placement_tuple)
+    except Exception:
+        screen.blit(pygame.image.load("data/images/placeholder.png"), placement_tuple)
 
     time_delta = clock.tick(60) / 1000.0
 
