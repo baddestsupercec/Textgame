@@ -38,7 +38,8 @@ class image_generator:
         input_type,
         output_name=None,
         num_images=1,
-        size=256,
+        size=512,
+        cfg_scale=15,
     ):
         """Generate an image from a text prompt.
 
@@ -48,6 +49,7 @@ class image_generator:
             output_name (str): Name of output file.
             num_images (int): Number of images to generate.
             size (str): Size of output image. 256x256, 512x512, or 1024x1024 pixels.
+            cfg_scale (int): Classifier free guidance scale. How strongly the image should conform to the prompt.
         """
         # Set output_name if none provided.
         if output_name is None:
@@ -56,7 +58,13 @@ class image_generator:
         full_path = f"{self.img_write_dir}{output_name}.png"
 
         if input_type == "prompt":
-            send_data = {"prompt": data, "width": size, "height": size}
+            send_data = {
+                "prompt": data,
+                "width": size,
+                "height": size,
+                "samples": num_images,
+                "guidance_scale": cfg_scale,
+            }
             response = self._submit_post(self.api_url, send_data)
             self._save_encoded_image(response.json()["images"][0], full_path)
         elif input_type == "image":

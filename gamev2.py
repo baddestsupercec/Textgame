@@ -3,6 +3,7 @@ import sys
 import pygame_gui
 import os
 import shutil
+from PIL import Image
 from pygame_gui.elements import UITextBox
 from pygame_gui.core import ObjectID
 from scene import Scene
@@ -475,6 +476,20 @@ def showText(text):
     )
 
 
+def showImage(scene_text):
+    placement_tuple = (272, 230)
+    try:
+        img_name = "image"
+        ig.generate(data=scene_text, input_type="prompt", output_name=img_name)
+        # Resize image to 256x256
+        img = Image.open(f"{images_dir}{img_name}.png")
+        img_resized = img.resize((256, 256), resample=Image.ANTIALIAS)
+        img_resized.save(f"{images_dir}{img_name}.png")
+        # Display image
+        screen.blit(pygame.image.load(f"{images_dir}{img_name}.png"), placement_tuple)
+    except Exception:
+        screen.blit(pygame.image.load("data/images/placeholder.png"), placement_tuple)
+
 def showTextButtons(text, x, y):
     surface = font.render(text, True, text_color)
     screen.blit(surface, (x, y))
@@ -587,14 +602,7 @@ def runScene(sceneNum):
     screen.fill(background_color)
     scene_text = updateChoice(sceneNum)
     showText(scene_text)
-
-    placement_tuple = (272, 230)
-    try:
-        img_name = "image"
-        img = ig.generate(data=scene_text, input_type="prompt", output_name=img_name)
-        screen.blit(pygame.image.load(f"{images_dir}{img_name}.png"), placement_tuple)
-    except Exception:
-        screen.blit(pygame.image.load("data/images/placeholder.png"), placement_tuple)
+    showImage(scene_text)
 
     time_delta = clock.tick(60) / 1000.0
 
@@ -678,4 +686,5 @@ while is_running:
 
     runScene(0)
 
+# Remove temp dir
 shutil.rmtree(images_dir)
