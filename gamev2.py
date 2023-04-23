@@ -1,6 +1,8 @@
 import pygame
 import sys
 import pygame_gui
+import os
+import shutil
 from pygame_gui.elements import UITextBox
 from pygame_gui.core import ObjectID
 from scene import Scene
@@ -73,7 +75,10 @@ eatFood = False
 useMedicine = False
 keepGun = False
 manager = pygame_gui.UIManager((800, 600))
-ig = image_generator.image_generator(img_write_dir="data/images/", api_url="http://127.0.0.1:7861/sdapi/v1/txt2img")
+images_dir = "data/images/tmp/"
+if not os.path.isdir(images_dir):
+    os.mkdir(images_dir)
+ig = image_generator.image_generator(img_write_dir=images_dir, api_url="http://127.0.0.1:7861/sdapi/v1/txt2img")
 
 # Use this to display text
 text_box = UITextBox('<font face=fira_code size=3 color=#FFFFFF>'
@@ -484,7 +489,7 @@ def runScene(sceneNum):
 
     img_name = "image"
     img = ig.generate(data=scene_text, input_type="prompt", output_name=img_name)
-    screen.blit(pygame.image.load(f"data/images/{img_name}.png"), (272,230))
+    screen.blit(pygame.image.load(f"{images_dir}{img_name}.png"), (272,230))
 
     time_delta = clock.tick(60)/1000.0
 
@@ -546,3 +551,5 @@ while is_running:
     manager.draw_ui(window_surface)
 
     runScene(0)
+
+shutil.rmtree(images_dir)
