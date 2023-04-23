@@ -4,6 +4,7 @@ import pygame_gui
 from pygame_gui.elements import UITextBox
 from pygame_gui.core import ObjectID
 from scene import Scene
+from image_generator_free import image_generator
 
 pygame.init()
 pygame.mixer.init()
@@ -72,6 +73,7 @@ eatFood = False
 useMedicine = False
 keepGun = False
 manager = pygame_gui.UIManager((800, 600))
+ig = image_generator.image_generator(img_write_dir="data/images/", api_url="http://127.0.0.1:7861/sdapi/v1/txt2img")
 
 # Use this to display text
 text_box = UITextBox('<font face=fira_code size=3 color=#FFFFFF>'
@@ -81,12 +83,9 @@ text_box = UITextBox('<font face=fira_code size=3 color=#FFFFFF>'
 
 
                      '</font>',
-                     pygame.Rect((10, 10), (780, 500)),
+                     pygame.Rect((10, 10), (780, 200)),
                      manager=manager,
                      object_id=ObjectID(class_id="@text_box", object_id="#text_box_1"))
-text_box.set_active_effect(pygame_gui.TEXT_EFFECT_TYPING_APPEAR,
-                           params={'time_per_letter': 0.03,
-                                   'time_per_letter_deviation': 0.02})
 
 
 scenes = [Scene("Hello, and welcome to Zombie Game! How many players are playing?",
@@ -458,9 +457,9 @@ def updateChoice(sceneNum):
     if (sceneNum == 24 and giveGun == False and run == False):
         return "Unarmed and helpless, Cole quickly grabs an old wooden board on the street and runs to his father. He swings at the zombie with all his strength, but it is unaffected and remains focused on David. He finally unleashes a massave swing that stuns the zombie and gives David the chance to grab his knife and kill it for good."
     if (sceneNum == 24 and giveGun == True and run == False and bitTwice == False):
-        return "Cole takes out the gun his father trusted him with and lines up his target. He fires multiple shots but the zombie is unafected. Down to his last shot, he fires into the Zombie's head and kills it for good."
+        return "Cole takes out the gun his father trusted him with and lines up his target. He fires multiple shots but the zombie is unaffected. Down to his last shot, he fires into the Zombie's head and kills it for good."
     if (sceneNum == 24 and giveGun == True and run == False and bitTwice == True):
-        return "Cole takes out the gun his father trusted him with and lines up his target. He fires multiple shots but the zombie is unafected. Down to his last shot, he fires into the Zombie's head and kills it for good. David uses this opportunity to grab his knife and kill the remaining zombie."
+        return "Cole takes out the gun his father trusted him with and lines up his target. He fires multiple shots but the zombie is unaffected. Down to his last shot, he fires into the Zombie's head and kills it for good. David uses this opportunity to grab his knife and kill the remaining zombie."
     if (sceneNum == 24 and run == True and giveGun == False):
         return "Unarmed and helpless, Cole quickly grabs an old wooden board on the street and runs to his father. He desperately tries to hit and distract the zombies but it is no use, as they remain fixated on David. With David's energy spent, David tries to reach for his knife as one zombie sinks its teeth into his leg and the other his arm. He screams in pain and in a burst of adrenaline, uses this momement to kill them as they bite into him."
     if (sceneNum == 25 and run == False and bitTwice == False):
@@ -480,7 +479,13 @@ def runScene(sceneNum):
         scenes[sceneNum].soundClip.play()
 
     screen.fill(background_color)
-    showText(updateChoice(sceneNum))
+    scene_text = updateChoice(sceneNum)
+    showText(scene_text)
+
+    img_name = "image"
+    img = ig.generate(data=scene_text, input_type="prompt", output_name=img_name)
+    screen.blit(pygame.image.load(f"data/images/{img_name}.png"), (272,230))
+
     time_delta = clock.tick(60)/1000.0
 
     buttonWidth = 325
