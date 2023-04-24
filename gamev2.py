@@ -1,3 +1,4 @@
+import argparse
 import pygame
 import sys
 import pygame_gui
@@ -8,6 +9,17 @@ from pygame_gui.elements import UITextBox
 from pygame_gui.core import ObjectID
 from scene import Scene
 from image_generator_free import image_generator
+
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument(
+    "--api-url",
+    type=str,
+    help="URL of API",
+    default="http://127.0.0.1:7861/sdapi/v1/txt2img",
+)
+args = parser.parse_args()
 
 pygame.init()
 pygame.mixer.init()
@@ -79,9 +91,7 @@ manager = pygame_gui.UIManager((800, 600))
 images_dir = "data/images/tmp/"
 if not os.path.isdir(images_dir):
     os.mkdir(images_dir)
-ig = image_generator.image_generator(
-    img_write_dir=images_dir, api_url="http://127.0.0.1:7861/sdapi/v1/txt2img"
-)
+ig = image_generator.image_generator(img_write_dir=images_dir, api_url=args.api_url)
 
 # Use this to display text
 text_box = UITextBox(
