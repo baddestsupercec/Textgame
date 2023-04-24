@@ -479,6 +479,119 @@ scenes.append(
 )  # 37
 scenes.append(Scene("End of Chapter 1", "Continue", "Continue", 39, 39, 1))  # 38
 
+# Chapter 2
+scenes.append(
+    Scene("Chapter 2: David",
+          "Continue",
+          "Continue",
+          40,
+          40,
+          1))  # 39
+scenes.append(
+    Scene("Virginia isn't far, but with limited food, water, and fuel, the trip was risky. \nThe empty roads only made the situation more sinister.",
+          "Continue",
+          "Continue",
+          41,
+          41,
+          1))  # 40
+scenes.append(
+    Scene("David and Cole reach a small, abandoned town.\nDavid: We should start looking for fuel. We can't afford to run out before reaching Virginia."
+          "\nUp ahead there is a gasoline station cluttered with abandoned cars.",
+          "Try to siphon fuel from the cars",
+          "Try to use the fuel pump",
+          42,
+          43,
+          2))  # 41
+
+scenes.append(
+    Scene("David: You stay here Cole, and look out for any zombies. I'm going to try to get some fuel from those cars over there. "
+          "\nCole: I know you've already been bit, but be careful. If you get bit again, it will only make your condition worse."
+          "\nThe streets look calm, but there is an eerie feeling in the air",
+          "Continue",
+          "Continue",
+          44,
+          44,
+          1))  # 42
+scenes.append(
+    Scene("David: You stay here Cole, and look out for any zombies. I'm going to try to get some fuel from the fuel pump."
+          "\nCole: I know you've already been bit, but be careful. If you get bit again, it will only make your condition worse."
+          "\nThe streets look calm, but there is an eerie feeling in the air",
+          "Continue",
+          "Continue",
+          45,
+          45,
+          1))  # 43
+
+scenes.append(
+    Scene("David takes a deep breath before getting out of the car. It hasn't been long, but it's like he can already feel the virus running in his veins."
+          "\nDavid works quickly to siphon fuel from the abandoned cars, but there isn't much left. Still, he'll take what he can get.",
+          "Continue",
+          "Continue",
+          46,
+          46,
+          1))  # 44
+scenes.append(
+    Scene("David takes a deep breath before getting out of the car. It hasn't been long, but it's like he can already feel the virus running in his veins."
+          "\nDavid attempts to recover some gasoline form the fuel pump, but quickly realizes there is none left. David needs to act quickly or risk getting attacked by a zombie again.",
+          "Try to siphon fuel from the cars",
+          "Try to siphon fuel from the cars",
+          46,
+          46,
+          1))  # 45
+scenes.append(
+    Scene("As David is still attempting to fuel their car, there is a sudden noise from behind an abandoned car."
+          "\nCole: Dad! There's a zombie coming!"
+          "\nSure enough, a zombie approaches David although the zombie is slow and appears to be injured."
+          "\nDavid immediately reaches for his weapon.",
+          "Continue",
+          "Continue",
+          47,
+          47,
+          1))  # 46
+scenes.append(
+    Scene("It shouldn't take much to defeat it this zombie, but David can not afford to take any chances."
+          "\nWith little hesitation, David launches at the zombie with his knife",
+          "Aim for the torso",
+          "Aim for the neck",
+          48,
+          49,
+          2))  # 47
+scenes.append(
+    Scene("David stabs the zombie right in the chest. Immediately, the zombie leans forward and opens its mouth to bite David on the shoulder."
+          "\nCole: Dad, watch out!",
+          "Use the gun",
+          "Run away",
+          50,
+          51,
+          2))  # 48
+scenes.append(
+    Scene("David stabs the zombie right in the neck. Immediately, the already-injured zombie stumbles back and falls. "
+          "\nToo weak to move, the zombie is no longer a threat. David finishes up fueling the car, and their trip to Virginia continues.",
+          "Continue",
+          "Continue",
+          52,
+          52,
+          1))  # 49
+scenes.append(
+    Scene("This zombie is proving to be more of a threat that anticipated. David pulls out his gun and fires a single shot to the head. The zombie stumbles back and lies still."
+          "\nDavid finishes up fueling the car, and their trip to Virginia continues.",
+          "Continue",
+          "Continue",
+          52,
+          52,
+          1))  # 50
+scenes.append(
+    Scene("With no chance to finish fueling the car, David runs back into the car and shuts the door. He can not risk getting bit again if he wants to get his son to Virginia."
+          "\nDavid checks the fuel gauge, at least he was able to fill it up half way. David and Cole's trip to Virginia continues.",
+          "Continue",
+          "Continue",
+          52,
+          52,
+          1))  # 51
+
+scenes.append(Scene("End of Chapter 2", "Continue", "Continue", 53, 53, 1))  # 52
+
+
 
 def showText(text):
     text_box.set_text(text)
@@ -607,6 +720,8 @@ def updateChoice(sceneNum):
         runScene(32)
     if sceneNum == 30 and medicine == False and food == True:
         runScene(31)
+
+
     return scenes[sceneNum].mainText
 
 
