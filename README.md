@@ -18,8 +18,12 @@ Enjoy the development of the storyline as fitting music plays in the background.
 
 
 # To Run
-1. Clone the repo using `git clone https://github.com/baddestsupercec/Textgame <DESIRED-FOLDER-NAME>`
-2. Move to the appropriate directory `cd <DESIRED-FOLDER-NAME>`
-3. Run `python -m pip install -r requirements.txt`
-4. Compile and Execute gamev2.py in a Python environment to start playing! `python gamev2.py`
+1. Clone the repo using 
+    - `git clone https://github.com/baddestsupercec/Textgame <DESIRED-FOLDER-NAME>`
+2. Move to the appropriate directory 
+    - `cd <DESIRED-FOLDER-NAME>`
+3. Install required packages 
+    - `python -m pip install -r requirements.txt`
+4. Execute gamev2.py in a Python environment to start playing! Optionally provide an API URL to use custom image generation API.
+    - `python gamev2.py --api-url=URL`
 
