@@ -781,7 +781,7 @@ def showImage(scene_text):
     try:
         img_name = "image"
         ig.generate(
-            data=f'Zombie apocalypse style, "{scene_text}"',
+            data=f'realistic style, apocalypse, "{scene_text}"',
             input_type="prompt",
             output_name=img_name,
         )

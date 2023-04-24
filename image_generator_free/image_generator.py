@@ -67,10 +67,10 @@ class image_generator:
             send_data = {  # Specify the config for the generated images.
                 "sd_model": "v2-1_768-ema-pruned.safetensors",
                 "prompt": data,
-                "negative_prompt": "text, lowres, error, cropped, worst quality, low quality, jpeg artifacts, out of frame, watermark, signature",
+                "negative_prompt": "text, lowres, cropped, low quality, out of frame, watermark, signature",
                 "width": size,
                 "height": size,
-                "restore_faces": restore_faces,
+                "restore_faces": False,
                 "tiling": False,
                 "batch_size": num_images,
                 "steps": steps,
