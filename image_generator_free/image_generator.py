@@ -37,18 +37,24 @@ class image_generator:
         data,
         input_type,
         output_name=None,
-        num_images=1,
         size=512,
-        cfg_scale=15,
+        restore_faces=True,
+        num_images=1,
+        steps=10,
+        cfg_scale=7,
     ):
         """Generate an image from a text prompt.
+
+        See https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/master/modules/txt2img.py for api args
 
         Arguments:
             data (str): input data.
             input_type (str): Type of input. Must be either "prompt" or "image".
             output_name (str): Name of output file.
+            size (str): Size of generated image. sizexsize.
+            restore_faces (bool): Whether to restore faces in generated images.
             num_images (int): Number of images to generate.
-            size (str): Size of output image. 256x256, 512x512, or 1024x1024 pixels.
+            steps (int): Number of steps to run the model for.
             cfg_scale (int): Classifier free guidance scale. How strongly the image should conform to the prompt.
         """
         # Set output_name if none provided.
@@ -58,12 +64,17 @@ class image_generator:
         full_path = f"{self.img_write_dir}{output_name}.png"
 
         if input_type == "prompt":
-            send_data = {
+            send_data = {  # Specify the config for the generated images.
+                "sd_model": "v2-1_768-ema-pruned.safetensors",
                 "prompt": data,
+                "negative_prompt": "text, lowres, error, cropped, worst quality, low quality, jpeg artifacts, out of frame, watermark, signature",
                 "width": size,
                 "height": size,
-                "samples": num_images,
-                "guidance_scale": cfg_scale,
+                "restore_faces": restore_faces,
+                "tiling": False,
+                "batch_size": num_images,
+                "steps": steps,
+                "cfg_scale": cfg_scale,
             }
             response = self._submit_post(self.api_url, send_data)
             self._save_encoded_image(response.json()["images"][0], full_path)

@@ -480,7 +480,11 @@ def showImage(scene_text):
     placement_tuple = (272, 230)
     try:
         img_name = "image"
-        ig.generate(data=scene_text, input_type="prompt", output_name=img_name)
+        ig.generate(
+            data=f'Zombie apocalypse style, "{scene_text}"',
+            input_type="prompt",
+            output_name=img_name,
+        )
         # Resize image to 256x256
         img = Image.open(f"{images_dir}{img_name}.png")
         img_resized = img.resize((256, 256), resample=Image.ANTIALIAS)
@@ -489,6 +493,7 @@ def showImage(scene_text):
         screen.blit(pygame.image.load(f"{images_dir}{img_name}.png"), placement_tuple)
     except Exception:
         screen.blit(pygame.image.load("data/images/placeholder.png"), placement_tuple)
+
 
 def showTextButtons(text, x, y):
     surface = font.render(text, True, text_color)
