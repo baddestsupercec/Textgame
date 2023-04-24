@@ -1,2 +1,4 @@
-pygame
+Pillow
+pygame==2.3.0
 pygame_gui
+requests
