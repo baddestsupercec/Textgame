@@ -17,7 +17,7 @@ parser.add_argument(
     "--api-url",
     type=str,
     help="URL of API",
-    default="http://127.0.0.1:7861/sdapi/v1/txt2img",
+    default="http://127.0.0.1:7861",
 )
 args = parser.parse_args()
 
@@ -91,7 +91,9 @@ manager = pygame_gui.UIManager((800, 600))
 images_dir = "data/images/tmp/"
 if not os.path.isdir(images_dir):
     os.mkdir(images_dir)
-ig = image_generator.image_generator(img_write_dir=images_dir, api_url=args.api_url)
+ig = image_generator.image_generator(
+    img_write_dir=images_dir, api_url=f"{args.api_url}/sdapi/v1/txt2img"
+)
 
 # Use this to display text
 text_box = UITextBox(
