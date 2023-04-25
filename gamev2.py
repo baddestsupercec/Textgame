@@ -780,10 +780,12 @@ def showImage(scene_text):
     placement_tuple = (272, 230)
     try:
         img_name = "image"
+        prompt = f'realistic style, apocalypse, "{scene_text}"'
         ig.generate(
-            data=f'realistic style, apocalypse, "{scene_text}"',
+            data=prompt,
             input_type="prompt",
             output_name=img_name,
+            negative_prompt="text, lowres, cropped, low quality, out of frame, watermark, signature",
         )
         # Resize image to 256x256
         img = Image.open(f"{images_dir}{img_name}.png")

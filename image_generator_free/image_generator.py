@@ -37,6 +37,7 @@ class image_generator:
         data,
         input_type,
         output_name=None,
+        negative_prompt="",
         size=512,
         restore_faces=True,
         num_images=1,
@@ -51,6 +52,7 @@ class image_generator:
             data (str): input data.
             input_type (str): Type of input. Must be either "prompt" or "image".
             output_name (str): Name of output file.
+            negative_prompt (str): Negative prompt to use to exclude certain things from the image.
             size (str): Size of generated image. sizexsize.
             restore_faces (bool): Whether to restore faces in generated images.
             num_images (int): Number of images to generate.
@@ -67,7 +69,7 @@ class image_generator:
             send_data = {  # Specify the config for the generated images.
                 "sd_model": "v2-1_768-ema-pruned.safetensors",
                 "prompt": data,
-                "negative_prompt": "text, lowres, cropped, low quality, out of frame, watermark, signature",
+                "negative_prompt": negative_prompt,
                 "width": size,
                 "height": size,
                 "restore_faces": False,
