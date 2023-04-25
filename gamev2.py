@@ -780,7 +780,7 @@ def showImage(scene_text):
     placement_tuple = (272, 230)
     try:
         img_name = "image"
-        prompt = f'realistic style, apocalypse, "{scene_text}"'
+        prompt = f'realistic style, apocalypse, Produce an image depicting the following: "{scene_text}"'
         ig.generate(
             data=prompt,
             input_type="prompt",
