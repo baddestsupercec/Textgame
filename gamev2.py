@@ -87,6 +87,7 @@ run = False
 eatFood = False
 useMedicine = False
 keepGun = False
+day = False
 manager = pygame_gui.UIManager((800, 600))
 images_dir = "data/images/tmp/"
 if not os.path.isdir(images_dir):
@@ -409,7 +410,7 @@ scenes.append(
 )  # 30
 scenes.append(
     Scene(
-        "David: Here, I know you're hungry, I was able to find some food.\nCole begins eating but notices his father isn't eating anything.\nCole: Why are you eating, aren't you hungry?\nDavid: I'm alright. I wasn't able to find much, you should keep your strength up.",
+        "David: Here, I know you're hungry, I was able to find some food.\nCole begins eating but notices his father isn't eating anything.\nCole: Why aren't you eating, aren't you hungry?\nDavid: I'm alright. I wasn't able to find much, you should keep your strength up.",
         "Share food with David",
         "Continue eating",
         34,
@@ -479,7 +480,7 @@ scenes.append(
 )  # 37
 scenes.append(Scene("End of Chapter 1", "Continue", "Continue", 39, 39, 1))  # 38
 
-# Chapter 2
+# -----------------------------------------------------------Chapter 2-------------------------------------------
 scenes.append(
     Scene("Chapter 2: David",
           "Continue",
@@ -549,7 +550,7 @@ scenes.append(
           47,
           1))  # 46
 scenes.append(
-    Scene("It shouldn't take much to defeat it this zombie, but David can not afford to take any chances."
+    Scene("It shouldn't take much to defeat this zombie, but David can not afford to take any chances."
           "\nWith little hesitation, David launches at the zombie with his knife",
           "Aim for the torso",
           "Aim for the neck",
@@ -590,6 +591,180 @@ scenes.append(
           1))  # 51
 
 scenes.append(Scene("End of Chapter 2", "Continue", "Continue", 53, 53, 1))  # 52
+
+#-----------------------------------------------Chapter 3-----------------------------------------------
+scenes.append(
+    Scene("Chapter 3: David",
+          "Continue",
+          "Continue",
+          54,
+          54,
+          1))  # 53
+scenes.append(
+    Scene("As David continues the drive to Virginia, he notices his hands shaking and his vision turning yellow. He tries to shake it off to hopefully "
+          "reach their destination, for both of their sakes.",
+          "Continue",
+          "Continue",
+          55,
+          55,
+          1))  # 54
+scenes.append(
+    Scene("David continues to struggle driving the car. The road has been relatively free of crashed cars and zombies thus far, but David"
+          " continues to swerve and narrowly miss obstacles. ",
+          "Ask Cole take over driving the car",
+          "Ignore your condition",
+          56,
+          57,
+          2))  # 55
+scenes.append(
+    Scene("David is relieved that Cole has taken over driving. His mind fades into happy thoughts of teaching Cole the fundamentals of driving."
+          " Never did he think that Cole would need to use his skills for a time like this. ",
+          "Continue",
+          "Continue",
+          59,
+          59,
+          1))  # 56
+scenes.append(
+    Scene("David continues to get drowsier. His head starts to spin and his vision goes green. Suddenly, he wakes to his son shouting.",
+          "Continue",
+          "Continue",
+          58,
+          58,
+          1))  # 57
+scenes.append(
+    Scene("David looks up in horror with renewed clarity to see his car heading directly into a tree. As the car slams into the tree, David can"
+          " only think of the previous decisions he has made. The tree begins to fall, but with nobody alive around, one can only wonder if it made"
+          " any sound at all",
+          "Exit Game",
+          "Exit Game",
+          75, #FIXME
+          75, #FIXME
+          1))  # 58
+scenes.append(
+    Scene("David wakes up to Cole vigorously shaking him. He notices a considerable amount of time has passed, as the sky is almost dark. "
+          "A quick survey of the dash board shows the car has run out of gas. With no other cars in sight, it is obvious to both that they"
+          " must continue on foot.",
+          "Ask Cole to take you with him",
+          "Ask Cole to leave you behind",
+          60,
+          60,
+          2))  # 59
+scenes.append(
+    Scene("Cole has no intentions of leaving his father behind. David watches his son scurry about, collecting the necessary supplies for their "
+          "journey on foot. David shifts his body around, mustering up the courage to finally stand up, despite his egregious wounds. ",
+          "Continue",
+          "Continue",
+          61,
+          61,
+          1))  # 60
+scenes.append(
+    Scene("He triumphantly stands up, ready to start their journey. He turns around to assist Cole with unloading the car, only to find the ground quickly approaching his face. "
+          " David collapses to the ground and blacks out, his future uncertain. ",
+          "Continue",
+          "Continue",
+          62,
+          62,
+          1))  # 61
+scenes.append(
+    Scene("Chapter 3: Cole", "Continue", "Continue", 63, 63, 1, True, introMusic)
+)  # 62
+
+scenes.append(
+    Scene("Cole watches in horror as his father collapses. He runs towards his father, catching him before he hits the ground. The sky continues to darken, as night continues to fall. He has no choice but to drag his body to a safe location for the night. ",
+          "Continue",
+          "Continue",
+          64,
+          64,
+          1))  # 63
+scenes.append(
+    Scene("Cole is uncertain of how long his father will remain unchanged. According to the radio, the camp should only be a few miles down the road. He wonders if he should risk"
+          " traversing in the road through the night or bunkering down for the night and leaving in the morning. ",
+          "Leave now",
+          "Wait until morning",
+          65,
+          66,
+          2))  # 64
+scenes.append(
+    Scene("Cole knows his father needs assistance as soon as possible. He quickly grabs his flashlight, gun, and belongings. "
+          "Before he leaves, he leaves him a quick note next to his backpack if David should wake up before his return. ",
+          "Continue",
+          "Continue",
+          67,
+          67,
+          1))  # 65
+scenes.append(
+    Scene("Cole knows his best chance at avoiding the zombies is to travel in the sunlight, where he can see any incoming threats. Before he goes to sleep, "
+          "he places a strip of duct tape over his father's mouth to hopefully ward off any late night attacks should he turn. ",
+          "Continue",
+          "Continue",
+          67,
+          67,
+          1))  # 66
+scenes.append(
+    Scene("With belongings in tow, he sets off on an arduous journey, with no idea what dangers lie ahead. At every sound, Cole jumps in fright, using his flashlight to inspect the potential source of danger. "
+          "After hours of walking, with no end in sight, Cole begins to lose hope. Out of the corner of his eye, he spots a large neon sign in the distance. With renewed energy, he heads toward the sign.",
+          "Continue",
+          "Continue",
+          68,
+          68,
+          1))  # 67
+scenes.append(
+    Scene("Once Cole gets closer to the sign, he sees a tall chain-link fence encompassing a massive compound. With absolute certainty, he knows that this area is the "
+          "survivor's camp. As he gets closer, Cole stops and wonders how he should approach the camp. ",
+          "Shout and Scream while Sprinting",
+          "Gather intel",
+          69,
+          70,
+          2))  # 68
+scenes.append(
+    Scene("Cole decides that his best bet to draw attention to himself, which should hopefully alert any guards that he is a human in search of help, rather than a stray zombie. He starts singing and yelling as he gets closer to the camp, and he notices movement from within the walls of the base. ",
+          "Continue",
+          "Continue",
+          71,
+          71,
+          1))  # 69
+scenes.append(
+    Scene("Cole decides that his best bet to scope out the base to ensure that the base is full of good-intentioned survivors. He gets ready to flank the base, borrowing knowledge from his handy ninja handbook.",
+          "Continue",
+          "Continue",
+          71,
+          71,
+          1))  # 70
+scenes.append(
+    Scene("Suddenly, he hears an engine roar and he turns around to find a military vehicle barreling towards him. He waves and shouts in front of the path of the vehicle, which skids to a stop. The doors open, and two survivors jump out. ",
+          "Continue",
+          "Continue",
+          72,
+          72,
+          1))  # 71
+scenes.append(
+    Scene("Cole is beyond relieved to see real people but quickly remembers his father's peril. He rushes over and screams about his father's predicament and pleads to the survivors to help him.",
+          "Continue",
+          "Continue",
+          73,
+          73,
+          1))  # 72
+scenes.append(
+    Scene("The survivors, worried to see a child alone in the apocalypse, agree to help, and the trio pile into the vehicle. After a quick drive, Cole spots their car along the road and the group pulls over.",
+          "Continue",
+          "Continue",
+          74,
+          74,
+          1))  # 73
+scenes.append(
+    Scene("Cole rushes to his father's resting place and is ecstatic to find him still there. "
+          "The survivors, asking no questions, quickly pick up the limp body of David and place him in the back of the truck. As the engine starts up again, Cole is relieved, "
+          "and promptly passes out from exhaustion, with their futures uncertain.",
+          "Exit Game",
+          "Exit Game",
+          75,
+          75,
+          1))  # 74
+
+scenes.append(Scene("Game Over", "Exit Game", "Exit Game", 76, 76, 1))  # 75
+scenes.append(Scene("Thank you for playing!", "Exit Game", "Exit Game", 76, 76, 1))  # 76
+
+
 
 
 
@@ -640,7 +815,7 @@ def choiceButton(text, x, y, w, h):
 
 # Function used to update all variables related to decisions
 def newChoice(sceneNum):
-    global food, giveGun, shotgun, medicine, twoPlayer, destination, bitTwice, run, eatFood, useMedicine, keepGun
+    global food, giveGun, shotgun, medicine, twoPlayer, destination, bitTwice, run, eatFood, useMedicine, keepGun, day
     # Chapter 1
     if sceneNum == 2:
         twoPlayer = True
@@ -668,6 +843,11 @@ def newChoice(sceneNum):
         eatFood = True
     if sceneNum == 35:
         useMedicine = True
+    if sceneNum == 66:
+        day = True
+    if sceneNum == 76:
+        pygame.quit()
+        sys.exit()
 
 
 # Checks if the text of the current scene should be updated based on previous decisions,
@@ -705,7 +885,7 @@ def updateChoice(sceneNum):
     if sceneNum == 23 and run == False and bitTwice == True:
         return "Cole continues to run towards his father to help but before he can get there one zombie sinks its teeth into his fathers arm and the other into his leg. Cole screams in horror, and David yells for him to stay back."
     if sceneNum == 24 and giveGun == False and run == False:
-        return "Unarmed and helpless, Cole quickly grabs an old wooden board on the street and runs to his father. He swings at the zombie with all his strength, but it is unaffected and remains focused on David. He finally unleashes a massave swing that stuns the zombie and gives David the chance to grab his knife and kill it for good."
+        return "Unarmed and helpless, Cole quickly grabs an old wooden board on the street and runs to his father. He swings at the zombie with all his strength, but it is unaffected and remains focused on David. He finally unleashes a massive swing that stuns the zombie and gives David the chance to grab his knife and kill it for good."
     if sceneNum == 24 and giveGun == True and run == False and bitTwice == False:
         return "Cole takes out the gun his father trusted him with and lines up his target. He fires multiple shots but the zombie is unaffected. Down to his last shot, he fires into the Zombie's head and kills it for good."
     if sceneNum == 24 and giveGun == True and run == False and bitTwice == True:
@@ -720,6 +900,8 @@ def updateChoice(sceneNum):
         runScene(32)
     if sceneNum == 30 and medicine == False and food == True:
         runScene(31)
+    if sceneNum == 74 and day == True:
+        return "Cole rushes to his father's resting place and is shocked to find it empty. The note remains untouched and David's bag still remains in the same spot. Cole looks out into the distance, understanding the fate of his father. "    
 
 
     return scenes[sceneNum].mainText
