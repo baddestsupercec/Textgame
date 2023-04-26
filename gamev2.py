@@ -611,7 +611,7 @@ scenes.append(
 scenes.append(
     Scene("David continues to struggle driving the car. The road has been relatively free of crashed cars and zombies thus far, but David"
           " continues to swerve and narrowly miss obstacles. ",
-          "Ask Cole take over driving the car",
+          "Ask Cole to take over driving",
           "Ignore your condition",
           56,
           57,
@@ -711,7 +711,7 @@ scenes.append(
 scenes.append(
     Scene("Once Cole gets closer to the sign, he sees a tall chain-link fence encompassing a massive compound. With absolute certainty, he knows that this area is the "
           "survivor's camp. As he gets closer, Cole stops and wonders how he should approach the camp. ",
-          "Shout and Scream while Sprinting",
+          "Shout and scream while sprinting",
           "Gather intel",
           69,
           70,
@@ -924,10 +924,10 @@ def runScene(sceneNum):
 
     time_delta = clock.tick(60) / 1000.0
 
-    buttonWidth = 325
+    buttonWidth = 345
     buttonHeight = 40
 
-    button1X = 50
+    button1X = 35
     button1Y = 530
 
     button2X = WIDTH - buttonWidth - button1X
