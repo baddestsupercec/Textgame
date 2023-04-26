@@ -487,7 +487,9 @@ scenes.append(
           "Continue",
           40,
           40,
-          1))  # 39
+          1, 
+          True,
+          introMusic))  # 39
 scenes.append(
     Scene("Virginia isn't far, but with limited food, water, and fuel, the trip was risky. \nThe empty roads only made the situation more sinister.",
           "Continue",
@@ -548,7 +550,9 @@ scenes.append(
           "Continue",
           47,
           47,
-          1))  # 46
+          1, 
+          True,
+          scene17Music))  # 46
 scenes.append(
     Scene("It shouldn't take much to defeat this zombie, but David can not afford to take any chances."
           "\nWith little hesitation, David launches at the zombie with his knife",
@@ -572,7 +576,9 @@ scenes.append(
           "Continue",
           52,
           52,
-          1))  # 49
+          1,
+          True,
+          introMusic))  # 49
 scenes.append(
     Scene("This zombie is proving to be more of a threat that anticipated. David pulls out his gun and fires a single shot to the head. The zombie stumbles back and lies still."
           "\nDavid finishes up fueling the car, and their trip to Virginia continues.",
@@ -599,7 +605,9 @@ scenes.append(
           "Continue",
           54,
           54,
-          1))  # 53
+          1, 
+          True,
+          introMusic))  # 53
 scenes.append(
     Scene("As David continues the drive to Virginia, he notices his hands shaking and his vision turning yellow. He tries to shake it off to hopefully "
           "reach their destination, for both of their sakes.",
@@ -637,8 +645,8 @@ scenes.append(
           " any sound at all",
           "Exit Game",
           "Exit Game",
-          75, #FIXME
-          75, #FIXME
+          76, #FIXME
+          76, #FIXME
           1))  # 58
 scenes.append(
     Scene("David wakes up to Cole vigorously shaking him. He notices a considerable amount of time has passed, as the sky is almost dark. "
@@ -715,7 +723,9 @@ scenes.append(
           "Gather intel",
           69,
           70,
-          2))  # 68
+          2,
+          True,
+          scene26Music))  # 68
 scenes.append(
     Scene("Cole decides that his best bet to draw attention to himself, which should hopefully alert any guards that he is a human in search of help, rather than a stray zombie. He starts singing and yelling as he gets closer to the camp, and he notices movement from within the walls of the base. ",
           "Continue",
