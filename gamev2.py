@@ -25,33 +25,33 @@ pygame.init()
 pygame.mixer.init()
 
 # Load the music files
-""" "Quinn's Song: A New Man" Kevin MacLeod (incompetech.com)
+startMusicCredits = """\"Quinn's Song: A New Man\" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
-http://creativecommons.org/licenses/by/4.0/ """
+http://creativecommons.org/licenses/by/4.0/\n\n"""
 startMusic = pygame.mixer.Sound("data/audio/Quinns Song-A New Man.mp3")
 startMusic.set_volume(0.4)
 
-""" "Metaphysik" Kevin MacLeod (incompetech.com)
+introMusicCredits = """\"Metaphysik\" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
-http://creativecommons.org/licenses/by/4.0/ """
+http://creativecommons.org/licenses/by/4.0/\n\n"""
 introMusic = pygame.mixer.Sound("data/audio/Metaphysik.mp3")
 introMusic.set_volume(0.4)
 
-""" "SCP-x3x (I am Not OK)" Kevin MacLeod (incompetech.com)
+scene17MusicCredits = """\"SCP-x3x (I am Not OK)\" Kevin MacLeod (incompetech.com
 Licensed under Creative Commons: By Attribution 4.0 License
-http://creativecommons.org/licenses/by/4.0/ """
+http://creativecommons.org/licenses/by/4.0/\n\n"""
 scene17Music = pygame.mixer.Sound("data/audio/SCP-x3x.mp3")
 scene17Music.set_volume(0.35)
 
-""" "Unseen Horrors" Kevin MacLeod (incompetech.com)
+scene22MusicCredits = """\"Unseen Horrors\" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
-http://creativecommons.org/licenses/by/4.0/ """
+http://creativecommons.org/licenses/by/4.0/\n\n"""
 scene22Music = pygame.mixer.Sound("data/audio/Unseen Horrors.mp3")
 scene22Music.set_volume(0.45)
 
-""" "Awkward Meeting" Kevin MacLeod (incompetech.com)
+scene26MusicCredits = """\"Awkward Meeting\" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
-http://creativecommons.org/licenses/by/4.0/ """
+http://creativecommons.org/licenses/by/4.0/\n\n"""
 scene26Music = pygame.mixer.Sound("data/audio/Awkward Meeting.mp3")
 scene26Music.set_volume(0.2)
 
@@ -762,13 +762,15 @@ scenes.append(
           1))  # 74
 
 scenes.append(Scene("Game Over", "Exit Game", "Exit Game", 76, 76, 1))  # 75
-scenes.append(Scene("Thank you for playing!", "Exit Game", "Exit Game", 76, 76, 1))  # 76
+scenes.append(Scene("Audio Credits:\n\n" + startMusicCredits + introMusicCredits + scene17MusicCredits + scene22MusicCredits + scene26MusicCredits, "Exit Game", "Exit Game", 77, 77, 1)) # 76
+scenes.append(Scene("Thank you for playing!", "Exit Game", "Exit Game", 77, 77, 1))  # 77
 
 
 
 
-
-def showText(text):
+def showText(text, sceneNum):
+    if sceneNum == 76:
+        text_box.set_dimensions((780, 500))
     text_box.set_text(text)
     text_box.set_active_effect(
         pygame_gui.TEXT_EFFECT_TYPING_APPEAR,
@@ -847,7 +849,7 @@ def newChoice(sceneNum):
         useMedicine = True
     if sceneNum == 66:
         day = True
-    if sceneNum == 76:
+    if sceneNum == 77:
         pygame.quit()
         sys.exit()
 
@@ -917,7 +919,7 @@ def runScene(sceneNum):
 
     screen.fill(background_color)
     scene_text = updateChoice(sceneNum)
-    showText(scene_text)
+    showText(scene_text, sceneNum)
     showImage(scene_text)
 
     time_delta = clock.tick(60) / 1000.0
